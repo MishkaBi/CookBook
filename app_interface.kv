@@ -1,0 +1,156 @@
+ScreenManager:
+    MenuScreen:
+    DishesListScreen:
+    CardItem:
+    Dish:
+
+<CardItem>:
+    name: 'card_item'
+    size_hint_y: None
+    height: "130dp"
+
+    MDCard:
+        padding: 0, 0, "6dp", "12dp"
+
+        Widget:
+            size_hint_x: .5
+            Image:
+                source: "photos/karbonara.jpg"
+
+
+        MDBoxLayout:
+            id: box
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Паста карбонара"
+                bold: True
+                font_style: "H6"
+
+            Widget:
+                size_hint_y: None
+                height: "2dp"
+
+            MDLabel:
+                text: "25 хвилин"
+                font_style: "Caption"
+                adaptive_height: True
+
+            Widget:
+                size_hint_y: None
+                height: "35dp"
+
+
+
+
+
+
+<MenuScreen>:
+    name: 'menu'
+    MDLabel:
+        text: "CookBook"
+        halign: 'center'
+        pos_hint: {'center_x':0.5,'center_y':0.8}
+        font_style: "H3"
+
+    MDRaisedButton:
+        text: root.button1_name
+        pos_hint: {'center_x':0.5,'center_y':0.5}
+        size_hint: 0.4, None
+        on_press:
+            root.manager.current = 'dishes_list'
+    MDRaisedButton:
+        text: root.button2_name
+        pos_hint: {'center_x':0.5,'center_y':0.4}
+        size_hint: 0.4, None
+        on_press: exit()
+
+
+<DishesListScreen>:
+    name: 'dishes_list'
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "CookBook"
+
+        ScrollView:
+
+            MDList:
+                id: dishes_list
+
+                CardItem:
+                    MDRaisedButton:
+                        text: "Перегляд"
+                        size_hint_x: 0.5
+                        pos: 130, 0
+                        on_release:
+                            root.manager.current = 'dish'
+                CardItem:
+                    MDRaisedButton:
+                        text: "Перегляд"
+                        size_hint_x: 0.5
+                        pos: 130, 0
+                        on_release:
+                            root.manager.current = 'dish'
+                CardItem:
+                    MDRaisedButton:
+                        text: "Перегляд"
+                        size_hint_x: 0.5
+                        pos: 130, 0
+                        on_release:
+                            root.manager.current = 'dish'
+                CardItem:
+                    MDRaisedButton:
+                        text: "Перегляд"
+                        size_hint_x: 0.5
+                        pos: 130, 0
+                        on_release:
+                            root.manager.current = 'dish'
+
+
+<Dish>:
+    ScrollView:
+        MDGridLayout:
+            rows: 5
+
+            MDBoxLayout:
+                size_hint_y: 1.2
+                Image:
+                    source: "photos/karbonara.jpg"
+
+            MDBoxLayout:
+                size_hint: 1, 0.2
+                padding: "10dp", 0, "10dp", 0
+                orientation: "horizontal"
+                MDLabel:
+                    text: "Складність:\nЛегко"
+                    font_size: '12sp'
+                MDLabel:
+                    text: "Час приготування:\n25 хвилин"
+                    halign: "right"
+                    font_size: '12sp'
+
+
+            MDBoxLayout:
+                padding: "10dp", 0, "10dp", 0
+                orientation: 'vertical'
+                size_hint_y: 0.5
+                MDLabel:
+                    text: "Традиційний рецепт пасти, швидкий, недорогий і дуже смачний. Правдива карбонара готується за 15 хв і вершкам в ній не місце. Все, що вам потрібно – свіжі яйця, шматок жирної свинячої грудинки та жменька тертого пармезану. Ну і спагеті."
+                    font_size: '12sp'
+
+            MDBoxLayout:
+                padding: "10dp", 0, "10dp", 0
+                size_hint_y: 0.5
+                orientation: 'vertical'
+                MDLabel:
+                    text:"ІНГРЕДІЄНТИ:\n500 гр спагеті\n250 гр жирної свинячої грудинки\n4 жовтки тертий пармезан\nсіль, перець"
+                    font_size: '12sp'
+
+            MDBoxLayout:
+                padding: "10dp", 0, "10dp", 0
+                orientation: 'vertical'
+                MDLabel:
+                    text:"КРОКИ ПРИГОТУВАННЯ:\n1. Зваріть пасту в добре посоленій воді, відповідно до часу вказаного на упаковці. Горнятко води, в якій варилась паста, зберегти.\n2. Грудинку нарізати не грубими шматочками і підсмажити на сковорідці. Поки смажиться грудинка, змішати жовтки з пармезаном до однорідної маси. Коли грудинка буде готова, додати в сковорідку пасту, трохи води, в якій вона варилася і суміш жовтків та пармезану. Перемішати і подавати негайно."
+                    font_size: '12sp'
